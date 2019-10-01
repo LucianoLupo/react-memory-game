@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
 
 import { createDeck, setCardsToMatched, hideAll, resetCardsActive } from '../../redux/cards/cards.actions';
+import { resetTimer } from '../../redux/timer/timer.actions';
 import { nextPlayer, addPoint } from '../../redux/players/players.actions';
 import Card from '../card/Card';
 
@@ -24,9 +25,11 @@ function CardsGrid({cardsRedux, cardsActive, create, hideAll, resetCardsActive ,
         if( cardsActive[0].idToMatch === cardsActive[1].idToMatch){
             setCardsToMatched(cardsActive[0].idToMatch);
             addPoint(activePlayer);
+            resetTimer();
         }else {
             setTimeout(() => {
                 hideAll();
+                resetTimer();
                 nextPlayer();
             },300)
         }
@@ -62,6 +65,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => ({
     create: () => dispatch(createDeck()),
     setCardsToMatched: (id) => dispatch(setCardsToMatched(id)),
+    resetTimer: () => dispatch(resetTimer()),
     resetCardsActive: () => dispatch(resetCardsActive()),
     hideAll: () => dispatch(hideAll()),
     nextPlayer: () => dispatch(nextPlayer()),

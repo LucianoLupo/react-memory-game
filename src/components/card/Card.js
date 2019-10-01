@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { CardContainer } from './card.styles';
-import { revealCard, addCardActive } from '../../redux/cards/cards.actions';
+import { revealCard, addCardActive, setCardsToMatched } from '../../redux/cards/cards.actions';
+import { resetTimer } from '../../redux/timer/timer.actions';
 
 
 
@@ -36,6 +37,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => ({
     reveal: (uid) =>  dispatch(revealCard(uid)),
     addCardActive: (card) => dispatch(addCardActive(card)),
+    setCardsToMatched: (id) => dispatch(setCardsToMatched(id)),
+    resetTimer: () => dispatch(resetTimer()),
+
   });
   
 
