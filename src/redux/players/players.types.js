@@ -1,0 +1,5 @@
+export const PlayersActionTypes = {
+  RESET_PLAYERS: 'RESET_PLAYERS',
+  ACTIVE_NEXT_PLAYER: 'ACTIVE_NEXT_PLAYER',
+  ADD_POINT: 'ADD_POINT'
+};
