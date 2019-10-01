@@ -1,10 +1,15 @@
 import React from 'react';
+import Game from './views/game/Game';
+import GameOver from './views/gameOver/GameOver';
 
 import './App.css';
 
 function App() {
+
+  const gameOver = false;
   return (
-    <div></div>
+    gameOver ? <GameOver /> : <Game/>
+
   );
 }
 
