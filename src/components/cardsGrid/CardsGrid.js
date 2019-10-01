@@ -1,10 +1,24 @@
 import React, { useEffect } from 'react'
+import { connect } from 'react-redux';
+
+import { createDeck } from '../../redux/cards/cards.actions';
 import Card from '../card/Card';
+
 import { CardsRow } from './cardsGrid.styles';
 
-function CardsGrid() {
+function CardsGrid({ cardsRedux, create }) {
 
-    const cards = [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16],[17,18,19,20]] 
+    const toMatrix = (arr, width) => 
+    arr.reduce((rows, key, index) => (index % width === 0 ? rows.push([key]) 
+      : rows[rows.length-1].push(key)) && rows, []);
+
+    
+
+    useEffect(() => {
+        create();
+    }, [])
+    const cards = toMatrix(cardsRedux.cards, 4)
+
 
     return (
         <div>
@@ -20,7 +34,24 @@ function CardsGrid() {
         </div>
     )
 }
-  export default CardsGrid;
+
+
+      
+const mapStateToProps = (state) => {
+    return { cardsRedux: state.cards,
+
+    };
+};
+
+const mapDispatchToProps = dispatch => ({
+    create: () => dispatch(createDeck()),
+  });
+  
+
+  export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(CardsGrid);
   
 
   
