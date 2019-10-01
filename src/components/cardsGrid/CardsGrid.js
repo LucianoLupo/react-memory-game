@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
 
-import { createDeck, hideAll, resetCardsActive, setCardsToMatched } from '../../redux/cards/cards.actions';
+import { createDeck, setCardsToMatched, hideAll, resetCardsActive } from '../../redux/cards/cards.actions';
+import { nextPlayer, addPoint } from '../../redux/players/players.actions';
 import Card from '../card/Card';
 
 import { CardsRow } from './cardsGrid.styles';
 
-function CardsGrid({cardsRedux, cardsActive, create, hideAll, resetCardsActive ,setCardsToMatched}) {
+function CardsGrid({cardsRedux, cardsActive, create, hideAll, resetCardsActive ,setCardsToMatched, resetTimer, nextPlayer, addPoint, activePlayer}) {
 
     const toMatrix = (arr, width) => 
     arr.reduce((rows, key, index) => (index % width === 0 ? rows.push([key]) 
@@ -22,9 +23,11 @@ function CardsGrid({cardsRedux, cardsActive, create, hideAll, resetCardsActive ,
     if( cardsActive.length === 2 ){
         if( cardsActive[0].idToMatch === cardsActive[1].idToMatch){
             setCardsToMatched(cardsActive[0].idToMatch);
+            addPoint(activePlayer);
         }else {
             setTimeout(() => {
                 hideAll();
+                nextPlayer();
             },300)
         }
         resetCardsActive();
@@ -47,11 +50,13 @@ function CardsGrid({cardsRedux, cardsActive, create, hideAll, resetCardsActive ,
     )
 }
 
+
       
 const mapStateToProps = (state) => {
     return { cardsRedux: state.cards,
-        cardsActive: state.cards.cardsActive,
-};
+             cardsActive: state.cards.cardsActive,
+             activePlayer: state.players.active
+    };
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -59,9 +64,10 @@ const mapDispatchToProps = dispatch => ({
     setCardsToMatched: (id) => dispatch(setCardsToMatched(id)),
     resetCardsActive: () => dispatch(resetCardsActive()),
     hideAll: () => dispatch(hideAll()),
+    nextPlayer: () => dispatch(nextPlayer()),
+    addPoint: (id) => dispatch(addPoint(id)),
 
   });
-  
   
 
   export default connect(

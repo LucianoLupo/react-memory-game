@@ -1,9 +1,9 @@
 import React from 'react'
-
-const PlayersData = () => {
+const PlayersData = ({player}) => {
     return (
         <div>
-            Player Data Works
+            {player.name} 
+            Counter:{player.counter}
         </div>
     )
 }
