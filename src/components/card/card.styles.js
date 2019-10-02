@@ -10,6 +10,7 @@ position:absolute;
 background-color: aqua;
 box-shadow: 0px 6px 31px -13px rgba(0,0,0,0.75);
 text-align:center;
+cursor:pointer;
 
 `
 
