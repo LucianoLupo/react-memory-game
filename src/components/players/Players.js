@@ -2,14 +2,13 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { nextPlayer } from '../../redux/players/players.actions';
 import PlayerData from '../playerData/PlayerData';
-
+import { PlayersContainer } from './players.styles';
 const Players = ({ players }) => {
-    console.log(players.players)
     return (
-        <div>
+        <PlayersContainer>
             <PlayerData player={players.players[0]}/>
             <PlayerData player={players.players[1]}/>
-        </div>
+        </PlayersContainer>
     )
 }
 

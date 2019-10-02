@@ -4,5 +4,10 @@ import styled from 'styled-components';
 export const TimerContainer = styled.div`
     display: flex;
     justify-content: center;
-    margin:0 auto;
+    color: white;
+    width:100px;
+
+    h1{
+        font-size:45px;
+    }
 `;

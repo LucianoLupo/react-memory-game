@@ -1,10 +1,13 @@
 import React from 'react'
+import { PlayersDataContainer } from './playerData.styles'
+
 const PlayersData = ({player}) => {
     return (
-        <div>
-            {player.name} 
-            Counter:{player.counter}
-        </div>
+        <PlayersDataContainer>
+            <h1> {player.name} </h1>
+             
+            <h3> Points: {player.counter} </h3>
+        </PlayersDataContainer>
     )
 }
 

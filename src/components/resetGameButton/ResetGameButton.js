@@ -6,7 +6,7 @@ import { resetPlayers } from '../../redux/players/players.actions';
 import { resetTimer } from '../../redux/timer/timer.actions';
 
 
-import { ButtonContainer } from './resetGameButton.styles';
+import { ButtonContainer, Button } from './resetGameButton.styles';
 
 function ResetGameButton( { resetDeck, resetPlayers, resetTimer } ) {
 
@@ -18,9 +18,12 @@ function ResetGameButton( { resetDeck, resetPlayers, resetTimer } ) {
     }
 
     return (
-        <ButtonContainer onClick={handleClick}>
-            <h3>Reset Game!</h3>
+        <ButtonContainer>
+            <Button onClick={handleClick}>
+                <h3>Reset Game!</h3>
+            </Button>
         </ButtonContainer>
+
     )
 }
 

@@ -6,7 +6,7 @@ import { resetTimer } from '../../redux/timer/timer.actions';
 import { nextPlayer, addPoint } from '../../redux/players/players.actions';
 import Card from '../card/Card';
 
-import { CardsRow } from './cardsGrid.styles';
+import { CardsRow, CardsContainer } from './cardsGrid.styles';
 
 function CardsGrid({cardsRedux, cardsActive, create, hideAll, resetCardsActive ,setCardsToMatched, resetTimer, nextPlayer, addPoint, activePlayer}) {
 
@@ -39,7 +39,7 @@ function CardsGrid({cardsRedux, cardsActive, create, hideAll, resetCardsActive ,
 
 
     return (
-        <div>
+        <CardsContainer>
             {
                 cards.map((row, key) => (
                 <CardsRow key={key}>
@@ -49,7 +49,7 @@ function CardsGrid({cardsRedux, cardsActive, create, hideAll, resetCardsActive ,
                 </CardsRow>
                 ))
             }
-        </div>
+        </CardsContainer>
     )
 }
 

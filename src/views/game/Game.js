@@ -5,15 +5,23 @@ import Timer from '../../components/timer/Timer';
 import CurrentPlayer from '../../components/currentPlayer/CurrentPlayer';
 import ResetGameButton from '../../components/resetGameButton/ResetGameButton';
 
+import { GameContainer, HeaderContainer, ResetButtonContainer,Header } from './game.styles';
+
 export default function Game() {
     return (
-        <div>
-            <Timer/>
-            <CurrentPlayer/>
+        <GameContainer>
+            <HeaderContainer>
+                <Header>
+                    <CurrentPlayer/>
+                    <Timer/>
+                </Header>
+            </HeaderContainer>
             <CardsGrid/>
             <Players/>
-            <ResetGameButton/>
+            <ResetButtonContainer>
+                <ResetGameButton/> 
+            </ResetButtonContainer>
             
-        </div>
+        </GameContainer>
     )
 }

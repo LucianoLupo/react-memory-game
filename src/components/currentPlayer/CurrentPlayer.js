@@ -1,11 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { CurrentPlayerContainer } from './currentPlayer.styles';
 
 const CurrentPlayer= ({ playerActive, players }) => {
     return (
-        <div>
-            Current Player: {players[playerActive].name}
-        </div>
+        <CurrentPlayerContainer>
+            <h3>Current Player: </h3>
+            <h1>{players[playerActive].name} </h1>
+        </CurrentPlayerContainer>
     )
 }
 
