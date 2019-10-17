@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { nextPlayer } from './redux/players/players.actions';
 
 import './App.css';
 import Game from './views/game/Game';
@@ -13,23 +12,14 @@ const App = ({players}) => {
     gameOver ? <GameOver players={players} /> : <Game/>
   );
 }
-
-
       
 const mapStateToProps = (state) => {
   return { players: state.players.players,
   };
 };
 
-const mapDispatchToProps = dispatch => ({
-  nextPlayer: () => dispatch(nextPlayer())
-
-});
-
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(App);
 
 
