@@ -17,18 +17,14 @@ const Card = ({ card:{ idToMatch, hidden, uid }, reveal,addCardActive, cardsActi
         config: { mass: 5, tension: 500, friction: 80 }
       })
   
-
     const handleCardClick = (uid) => {
         if(cardsActive.length < 2 && hidden){
             reveal(uid)
             addCardActive({idToMatch:idToMatch, uid:uid});
-            
         }
-
     }
     
     return (
- 
             <CardBoxContainer>
                 <CardContainer 
                 style={{ opacity: opacity.interpolate(o => 1 - o),zIndex: zIndex.interpolate(o => 1 - o), transform }} >
@@ -38,15 +34,12 @@ const Card = ({ card:{ idToMatch, hidden, uid }, reveal,addCardActive, cardsActi
                     <h2 style={{ transform:'rotateY(180deg)'}}> ? </h2>
                 </CardContainer>
             </CardBoxContainer>
-
-            
     )
 }
 
-
 const mapStateToProps = (state) => {
     return {
-             cardsActive: state.cards.cardsActive
+            cardsActive: state.cards.cardsActive
     };
 };
 

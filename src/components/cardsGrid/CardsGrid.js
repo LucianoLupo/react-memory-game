@@ -12,13 +12,12 @@ function CardsGrid({cardsRedux, cardsActive, create, hideAll, resetCardsActive ,
 
     const toMatrix = (arr, width) => 
     arr.reduce((rows, key, index) => (index % width === 0 ? rows.push([key]) 
-      : rows[rows.length-1].push(key)) && rows, []);
-
-    
+    : rows[rows.length-1].push(key)) && rows, []);
 
     useEffect(() => {
         create();
     }, [])
+
     const cards = toMatrix(cardsRedux.cards, 4)
 
     if( cardsActive.length === 2 ){
@@ -31,7 +30,7 @@ function CardsGrid({cardsRedux, cardsActive, create, hideAll, resetCardsActive ,
                 hideAll();
                 resetTimer();
                 nextPlayer();
-            },300)
+            },400)
         }
         resetCardsActive();
     }
@@ -52,8 +51,6 @@ function CardsGrid({cardsRedux, cardsActive, create, hideAll, resetCardsActive ,
         </CardsContainer>
     )
 }
-
-
       
 const mapStateToProps = (state) => {
     return { cardsRedux: state.cards,
